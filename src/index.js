@@ -5,17 +5,20 @@
 module.exports = function getLoveTrianglesCount(preferences = []) {
   var count = 0;
   var summ = [];
+  console.log(preferences.length);
   for (var i=0; i<preferences.length; i++)
   { 
     if ((i+1 == preferences[preferences[preferences[i]-1]-1])&&(preferences[i]!==preferences[preferences[preferences[i]-1]-1])){
       //console.log(i,preferences[preferences[preferences[i]-1]-1]);
-      if (summ.indexOf(preferences[i]+preferences[preferences[i]-1]+preferences[preferences[preferences[i]-1]-1])==-1){
+      if ((summ.indexOf(preferences[i])==-1)&&(summ.indexOf(preferences[preferences[i]-1])==-1)&&(summ.indexOf(preferences[preferences[preferences[i]-1]-1]))==-1){
         count++;
       }
-      summ.push(preferences[i]+preferences[preferences[i]-1]+preferences[preferences[preferences[i]-1]-1])
+      summ.push(preferences[i]);
+      summ.push(preferences[preferences[i]-1]);
+      summ.push(preferences[preferences[preferences[i]-1]-1]);
     }
   }
-  console.log(count);
+  //console.log(count);
 
   return count;
 };
